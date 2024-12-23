@@ -37,7 +37,7 @@ export const TodoCreate: React.FC<Props> = React.memo(function TodoCreate({
     }
   }, [title, isSubmitting, todoList]);
 
-  const handleSubmit = (event: FormEvent) => {
+  const onSubmit = (event: FormEvent) => {
     event.preventDefault();
     const newTitle = title.trim();
 
@@ -48,7 +48,7 @@ export const TodoCreate: React.FC<Props> = React.memo(function TodoCreate({
     }
   };
 
-  const handleToggleAll = () => {
+  const onToggleAll = () => {
     const updatedStatus = !toggleState;
     // console.log(updatedStatus);
 
@@ -66,10 +66,10 @@ export const TodoCreate: React.FC<Props> = React.memo(function TodoCreate({
             active: isAllCompleted,
           })}
           data-cy="ToggleAllButton"
-          onClick={handleToggleAll}
+          onClick={onToggleAll}
         />
       )}
-      <form method="POST" onSubmit={handleSubmit}>
+      <form method="POST" onSubmit={onSubmit}>
         <input
           ref={addRef}
           data-cy="NewTodoField"

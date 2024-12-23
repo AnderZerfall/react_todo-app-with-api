@@ -68,7 +68,7 @@ export const App: React.FC = () => {
     return todoList.length > activeTodosCount;
   }, [todoList, activeTodosCount]);
 
-  const handleClearCompleted = useCallback(async () => {
+  const onClearCompleted = useCallback(async () => {
     const completedTodos = todoList.filter(todo => todo.completed);
 
     setLoadingBunchIds(completedTodos.map(todo => todo.id));
@@ -85,17 +85,6 @@ export const App: React.FC = () => {
     } catch (error) {
       setErrorType(ErrorType.DELETE_TODO);
     }
-
-    // for (const todo of completedTodos) {
-    //   try {
-    //     await todoServices.deleteTodo(todo.id);
-    //     setTodoList(currentTodoList =>
-    //       currentTodoList.filter(currentTodo => currentTodo.id !== todo.id),
-    //     );
-    //   } catch (error) {
-    //     setErrorType(ErrorType.DELETE_TODO);
-    //   }
-    // }
 
     setLoadingBunchIds([]);
   }, [todoList]);
@@ -242,7 +231,7 @@ export const App: React.FC = () => {
               statusFilter={statusFilter}
               countActiveTodos={activeTodosCount}
               hasCompletedTodos={hasCompletedTodos}
-              clearCompleted={handleClearCompleted}
+              clearCompleted={onClearCompleted}
             />
           </>
         )}
