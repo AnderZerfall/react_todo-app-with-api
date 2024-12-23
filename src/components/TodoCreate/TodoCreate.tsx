@@ -37,22 +37,21 @@ export const TodoCreate: React.FC<Props> = React.memo(function TodoCreate({
     }
   }, [title, isSubmitting, todoList]);
 
-  const onSubmit = (event: FormEvent) => {
+  const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const newTitle = title.trim();
 
     if (newTitle) {
-      onAddTodo(newTitle);
+      await onAddTodo(newTitle);
     } else {
       sendError(ErrorType.EMPTY_TITLE);
     }
   };
 
-  const onToggleAll = () => {
+  const onToggleAll = async () => {
     const updatedStatus = !toggleState;
-    // console.log(updatedStatus);
 
-    onCompletingAll(updatedStatus);
+    await onCompletingAll(updatedStatus);
 
     setToggleState(updatedStatus);
   };

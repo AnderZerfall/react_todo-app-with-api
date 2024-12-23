@@ -34,7 +34,7 @@ export const TodoPlate: React.FC<Props> = ({
     const updatedStatus = !todo.completed;
     const updatedTodo = { ...todo, completed: updatedStatus };
 
-    onUpdateTodo(updatedTodo);
+    await onUpdateTodo(updatedTodo);
   };
 
   useEffect(() => {
